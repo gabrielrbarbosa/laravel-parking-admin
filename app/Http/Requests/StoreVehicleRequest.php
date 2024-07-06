@@ -24,7 +24,7 @@ class StoreVehicleRequest extends FormRequest
     public function rules()
     {
         return [
-            'plate_number' => 'required',
+            'license_plate' => 'required',
             'description'  => 'nullable',
         ];
     }

@@ -52,15 +52,15 @@ endpoints:
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
-      plate_number:
-        name: plate_number
+      license_plate:
+        name: license_plate
         description: ''
         required: true
         example: soluta
         type: string
         custom: []
     cleanBodyParameters:
-      plate_number: soluta
+      license_plate: soluta
     fileParameters: []
     responses: []
     responseFields: []
@@ -137,15 +137,15 @@ endpoints:
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
-      plate_number:
-        name: plate_number
+      license_plate:
+        name: license_plate
         description: ''
         required: true
         example: nihil
         type: string
         custom: []
     cleanBodyParameters:
-      plate_number: nihil
+      license_plate: nihil
     fileParameters: []
     responses: []
     responseFields: []

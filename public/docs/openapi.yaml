@@ -373,12 +373,12 @@ paths:
             schema:
               type: object
               properties:
-                plate_number:
+                license_plate:
                   type: string
                   description: ''
                   example: soluta
               required:
-                - plate_number
+                - license_plate
       security: []
   '/api/v1/vehicles/{id}':
     get:
@@ -433,12 +433,12 @@ paths:
             schema:
               type: object
               properties:
-                plate_number:
+                license_plate:
                   type: string
                   description: ''
                   example: nihil
               required:
-                - plate_number
+                - license_plate
       security: []
     delete:
       summary: ''

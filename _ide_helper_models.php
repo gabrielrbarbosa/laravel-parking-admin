@@ -86,7 +86,7 @@ namespace App\Models{
  *
  * @property int $id
  * @property int $user_id
- * @property string $plate_number
+ * @property string $license_plate
  * @property string|null $description
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at

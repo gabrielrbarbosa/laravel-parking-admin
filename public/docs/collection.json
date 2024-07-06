@@ -370,7 +370,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"plate_number\":\"soluta\"}"
+                            "raw": "{\"license_plate\":\"soluta\"}"
                         },
                         "description": "",
                         "auth": {
@@ -445,7 +445,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"plate_number\":\"nihil\"}"
+                            "raw": "{\"license_plate\":\"nihil\"}"
                         },
                         "description": "",
                         "auth": {

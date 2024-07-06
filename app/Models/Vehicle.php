@@ -14,9 +14,21 @@ class Vehicle extends Model
     use HasFactory;
     use SoftDeletes;
 
-    protected $fillable = ['user_id', 'plate_number', 'description'];
+    protected $fillable = [
+        'user_id',
+        'vehicle_type',
+        'size_type',
+        'fuel_type',
+        'license_plate',
+        'brand_id',
+        'model',
+        'year',
+        'color',
+        'transmission',
+        'image',
+    ];
 
-    protected static function booted()
+    protected static function booted(): void
     {
         static::addGlobalScope('user', function (Builder $builder) {
             $builder->where('user_id', auth()->id());
@@ -26,6 +38,11 @@ class Vehicle extends Model
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function brand(): BelongsTo
+    {
+        return $this->belongsTo(Brand::class);
     }
 
     public function parkings(): HasMany

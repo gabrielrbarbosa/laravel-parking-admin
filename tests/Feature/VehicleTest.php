@@ -28,7 +28,7 @@ class VehicleTest extends TestCase
         $response->assertStatus(200)
             ->assertJsonStructure(['data'])
             ->assertJsonCount(1, 'data')
-            ->assertJsonPath('data.0.plate_number', $vehicleForJohn->plate_number)
+            ->assertJsonPath('data.0.license_plate', $vehicleForJohn->license_plate)
             ->assertJsonMissing($vehicleForAdam->toArray());
     }
 
@@ -37,19 +37,19 @@ class VehicleTest extends TestCase
         $user = User::factory()->create();
 
         $response = $this->actingAs($user)->postJson('/api/v1/vehicles', [
-            'plate_number' => 'AAA111',
+            'license_plate' => 'AAA111',
         ]);
 
         $response->assertStatus(201)
             ->assertJsonStructure(['data'])
             ->assertJsonCount(3, 'data')
             ->assertJsonStructure([
-                'data' => ['0' => 'plate_number'],
+                'data' => ['0' => 'license_plate'],
             ])
-            ->assertJsonPath('data.plate_number', 'AAA111');
+            ->assertJsonPath('data.license_plate', 'AAA111');
 
         $this->assertDatabaseHas('vehicles', [
-            'plate_number' => 'AAA111',
+            'license_plate' => 'AAA111',
         ]);
     }
 
@@ -59,15 +59,15 @@ class VehicleTest extends TestCase
         $vehicle = Vehicle::factory()->create(['user_id' => $user->id]);
 
         $response = $this->actingAs($user)->putJson('/api/v1/vehicles/'.$vehicle->id, [
-            'plate_number' => 'AAA123',
+            'license_plate' => 'AAA123',
         ]);
 
         $response->assertStatus(202)
-            ->assertJsonStructure(['plate_number'])
-            ->assertJsonPath('plate_number', 'AAA123');
+            ->assertJsonStructure(['license_plate'])
+            ->assertJsonPath('license_plate', 'AAA123');
 
         $this->assertDatabaseHas('vehicles', [
-            'plate_number' => 'AAA123',
+            'license_plate' => 'AAA123',
         ]);
     }
 
@@ -81,8 +81,7 @@ class VehicleTest extends TestCase
         $response->assertNoContent();
 
         $this->assertDatabaseMissing('vehicles', [
-            'id' => $vehicle->id,
-            'deleted_at' => NULL
+            'id' => $vehicle->id
         ])->assertDatabaseCount('vehicles', 1);
     }
 }

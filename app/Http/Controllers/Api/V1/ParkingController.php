@@ -24,7 +24,7 @@ class ParkingController extends Controller
     public function history()
     {
         $stoppedParkings = Parking::stopped()
-            ->with(['vehicle' => fn ($q) => $q->withTrashed()])
+            ->with(['vehicle' => fn($q) => $q->withTrashed()])
             ->latest('stop_time')
             ->get();
 
@@ -37,9 +37,9 @@ class ParkingController extends Controller
             'vehicle_id' => [
                 'required',
                 'integer',
-                'exists:vehicles,id,deleted_at,NULL,user_id,'.auth()->id(),
+                'exists:vehicles,id,deleted_at,NULL,user_id,' . auth()->id(),
             ],
-            'zone_id'    => ['required', 'integer', 'exists:zones,id'],
+            'zone_id' => ['required', 'integer', 'exists:zones,id'],
         ]);
 
         if (Parking::active()->where('vehicle_id', $request->vehicle_id)->exists()) {
@@ -56,7 +56,7 @@ class ParkingController extends Controller
 
     public function show(Parking $parking)
     {
-        $parking->load(['vehicle' => fn ($q) => $q->withTrashed()]);
+        $parking->load(['vehicle' => fn($q) => $q->withTrashed()]);
 
         return ParkingResource::make($parking);
     }
@@ -64,7 +64,7 @@ class ParkingController extends Controller
     public function stop(Parking $parking)
     {
         $parking->update([
-            'stop_time'   => now(),
+            'stop_time' => now(),
             'total_price' => ParkingPriceService::calculatePrice($parking->zone_id, $parking->start_time),
         ]);
 

@@ -18,6 +18,7 @@ class ZoneResource extends JsonResource
             'id'             => $this->id,
             'name'           => $this->name,
             'price_per_hour' => $this->price_per_hour,
+            'price_per_month' => $this->price_per_month,
         ];
     }
 }

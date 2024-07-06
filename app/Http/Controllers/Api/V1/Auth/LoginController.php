@@ -32,7 +32,7 @@ class LoginController extends Controller
         }
 
         $device    = substr($request->userAgent() ?? '', 0, 255);
-        $expiresAt = $request->remember ? null : now()->addMinutes(config('session.lifetime'));
+        $expiresAt = $request->remember ? null : now()->addMinutes((int) config('session.lifetime'));
 
         return response()->json([
             'access_token' => $user->createToken($device, expiresAt: $expiresAt)->plainTextToken,

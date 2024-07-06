@@ -17,14 +17,15 @@ return new class extends Migration {
             $table->id();
 
             $table->string('name');
-            $table->integer('price_per_hour');
+            $table->decimal('price_per_hour');
+            $table->decimal('price_per_month');
 
             $table->timestamps();
         });
 
-        Zone::create(['name' => 'Green Zone', 'price_per_hour' => 100]);
-        Zone::create(['name' => 'Yellow Zone', 'price_per_hour' => 200]);
-        Zone::create(['name' => 'Red Zone', 'price_per_hour' => 300]);
+        Zone::create(['name' => 'Green Zone', 'price_per_hour' => 5, 'price_per_month' => 100]);
+        Zone::create(['name' => 'Yellow Zone', 'price_per_hour' => 10, 'price_per_month' => 200]);
+        Zone::create(['name' => 'Red Zone', 'price_per_hour' => 20, 'price_per_month' => 300]);
     }
 
     /**

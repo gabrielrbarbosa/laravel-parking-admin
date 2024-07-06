@@ -9,5 +9,7 @@ class Zone extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'price_per_hour'];
+    protected $table = 'zones';
+
+    protected $fillable = ['name', 'price_per_hour', 'price_per_month'];
 }

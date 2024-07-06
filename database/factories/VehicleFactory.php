@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Brand;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -18,11 +19,11 @@ class VehicleFactory extends Factory
     {
         return [
             'license_plate' => $this->faker->regexify('[A-Z]{3}[0-9]{1}[A-Z]{1}[0-9]{2}'),
-            'vehicle_type' => $this->faker->randomElement(['car', 'motorcycle', 'truck']),
+            'vehicle_type' => 'car',
             'size_type' => $this->faker->randomElement(['hatchback', 'sedan', 'suv', 'pickup', 'van', 'motorcycle', 'truck']),
             'fuel_type' => $this->faker->randomElement(['gasoline', 'ethanol', 'diesel', 'electric', 'hybrid']),
             'transmission_type' => $this->faker->randomElement(['manual', 'automatic']),
-            'brand_id' => $this->faker->numberBetween(1, 10),
+            'brand_id' => Brand::factory()->create()->id,
             'model' => $this->faker->word,
             'year' => $this->faker->year,
             'color' => $this->faker->colorName,

@@ -81,7 +81,8 @@ class VehicleTest extends TestCase
         $response->assertNoContent();
 
         $this->assertDatabaseMissing('vehicles', [
-            'id' => $vehicle->id
+            'id' => $vehicle->id,
+            'deleted_at' => null,
         ])->assertDatabaseCount('vehicles', 1);
     }
 }

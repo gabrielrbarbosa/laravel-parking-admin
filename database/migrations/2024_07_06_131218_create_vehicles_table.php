@@ -24,13 +24,14 @@ return new class extends Migration {
 
             $table->string('license_plate', 10)->unique();
             $table->string('description')->nullable();
-            $table->foreignId('brand_id')->constrained();
+            $table->foreignId('brand_id')->nullable()->constrained();
             $table->string('model')->nullable();
             $table->string('year', 4)->nullable();
             $table->string('color')->nullable();
             $table->string('image')->nullable();
 
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

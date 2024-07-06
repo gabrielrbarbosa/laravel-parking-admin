@@ -10,7 +10,7 @@ return new class extends Migration {
         Schema::create('brands', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->integer('fipe_id')->unique();
+            $table->integer('fipe_id')->unique()->nullable();
             $table->timestamps();
         });
     }

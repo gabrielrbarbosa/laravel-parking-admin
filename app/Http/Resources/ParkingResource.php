@@ -22,17 +22,18 @@ class ParkingResource extends JsonResource
         );
 
         return [
-            'id'          => $this->id,
-            'zone'        => [
-                'name'           => $this->zone->name,
+            'id' => $this->id,
+            'zone' => [
+                'name' => $this->zone->name,
                 'price_per_hour' => $this->zone->price_per_hour,
+                'price_per_month' => $this->zone->price_per_month,
             ],
-            'vehicle'     => [
+            'vehicle' => [
                 'license_plate' => $this->vehicle->license_plate,
-                'description'  => $this->vehicle->description,
+                'description' => $this->vehicle->description,
             ],
-            'start_time'  => $this->start_time->toDateTimeString(),
-            'stop_time'   => $this->stop_time?->toDateTimeString(),
+            'start_time' => $this->start_time->toDateTimeString(),
+            'stop_time' => $this->stop_time?->toDateTimeString(),
             'total_price' => $totalPrice,
         ];
     }

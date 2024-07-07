@@ -25,6 +25,7 @@ class VehicleFactory extends Factory
             'transmission_type' => $this->faker->randomElement(['manual', 'automatic']),
             //'brand_id' => Brand::factory()->create()->id,
             'brand_id' => Brand::inrandomorder()->first()->id,
+            'description' => $this->faker->word,
             'model' => $this->faker->word,
             'year' => $this->faker->year,
             'color' => $this->faker->colorName,

@@ -33,8 +33,7 @@ class VehicleResource extends Resource
                     ->maxLength(10),
                 'vehicle_type' => Forms\Components\Select::make('vehicle_type')
                     ->options(VehicleType::class)
-                    ->required()
-                    ->getOptionLabelFromRecordUsing(fn (Vehicle $record) => "{$record->first_name} {$record->last_name}"),
+                    ->required(),
                 'size_type' => Forms\Components\Select::make('size_type')
                     ->options(SizeType::class),
                 'fuel_type' => Forms\Components\Select::make('fuel_type')

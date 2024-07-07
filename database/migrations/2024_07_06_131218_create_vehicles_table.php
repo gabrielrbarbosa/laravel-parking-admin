@@ -17,7 +17,7 @@ return new class extends Migration {
 
             $table->foreignId('user_id')->constrained();
 
-            $table->enum('vehicle_type', ['car', 'motorcycle, truck'])->default('car');
+            $table->enum('vehicle_type', ['car', 'motorcycle', 'truck'])->default('car');
             $table->enum('size_type', ['hatchback', 'sedan', 'suv', 'pickup', 'van', 'motorcycle', 'truck'])->nullable();
             $table->enum('fuel_type', ['gasoline', 'ethanol', 'flex', 'diesel', 'electric', 'hybrid'])->nullable();
             $table->enum('transmission_type', ['manual', 'automatic'])->nullable();

@@ -2,16 +2,18 @@
 
 namespace App\Filament\Resources;
 
+use App\Enums\EnumUtility;
+use App\Enums\VehicleType;
+use App\Enums\SizeType;
+use App\Enums\FuelType;
+use App\Enums\TransmissionType;
 use App\Filament\Resources\VehicleResource\Pages;
-use App\Filament\Resources\VehicleResource\RelationManagers;
 use App\Models\Vehicle;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class VehicleResource extends Resource
 {
@@ -26,14 +28,19 @@ class VehicleResource extends Resource
                 Forms\Components\Select::make('user_id')
                     ->relationship('user', 'name')
                     ->required(),
-                Forms\Components\TextInput::make('vehicle_type')
-                    ->required(),
-                Forms\Components\TextInput::make('size_type'),
-                Forms\Components\TextInput::make('fuel_type'),
-                Forms\Components\TextInput::make('transmission_type'),
                 Forms\Components\TextInput::make('license_plate')
                     ->required()
                     ->maxLength(10),
+                'vehicle_type' => Forms\Components\Select::make('vehicle_type')
+                    ->options(VehicleType::class)
+                    ->required()
+                    ->getOptionLabelFromRecordUsing(fn (Vehicle $record) => "{$record->first_name} {$record->last_name}"),
+                'size_type' => Forms\Components\Select::make('size_type')
+                    ->options(SizeType::class),
+                'fuel_type' => Forms\Components\Select::make('fuel_type')
+                    ->options(FuelType::class),
+                'transmission_type' => Forms\Components\Select::make('transmission_type')
+                    ->options(TransmissionType::class),
                 Forms\Components\TextInput::make('description')
                     ->maxLength(255),
                 Forms\Components\Select::make('brand_id')

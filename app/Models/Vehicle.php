@@ -21,6 +21,7 @@ class Vehicle extends Model
         'fuel_type',
         'license_plate',
         'brand_id',
+        'description',
         'model',
         'year',
         'color',

@@ -24,6 +24,8 @@ class AdminPanelProvider extends PanelProvider
     {
         return $panel
             ->default()
+            ->spa()
+            ->unsavedChangesAlerts()
             ->id('admin')
             ->path('admin')
             ->login()
